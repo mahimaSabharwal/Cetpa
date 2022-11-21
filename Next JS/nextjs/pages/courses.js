@@ -1,5 +1,8 @@
 import React from "react";
 
+//Bootatrap Modules
+import { Row, Col, Card, Button } from "react-bootstrap";
+
 //Styles
 import styles from "../styles/Courses.module.css";
 
@@ -14,34 +17,31 @@ export const getStaticProps = async () => {
 const courses = (props) => {
   console.log(props.courseData);
   return (
-    <div>
+    <>
       <h1>Courses</h1>
-      <div className="row">
+      <Row>
         {props.courseData.map((item, index) => {
           return (
-            <div className="col-3 d-flex align-items-stretch gap-3">
-              <div class="card mb-5" key={index}>
-                <img
+            <Col className="d-flex align-items-stretch" key={index}>
+              <Card className="mb-4" style={{ width: "18rem" }}>
+                <Card.Img
+                  variant="top"
                   src={item.image}
-                  class={[styles.img, "card-img-top"].join(" ")}
-                  alt={item.title}
+                  width="150"
+                  height="300"
+                  className="img"
                 />
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </p>
-                  <a href="#" class="btn btn-primary">
-                    Go somewhere
-                  </a>
-                </div>
-              </div>
-            </div>
+                <Card.Body>
+                  <Card.Title>{item.title}</Card.Title>
+                  <Card.Text>{item.description}</Card.Text>
+                  <Button variant="primary">Go somewhere</Button>
+                </Card.Body>
+              </Card>
+            </Col>
           );
         })}
-      </div>
-    </div>
+      </Row>
+    </>
   );
 };
 
