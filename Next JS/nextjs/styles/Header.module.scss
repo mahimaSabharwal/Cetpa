@@ -1,0 +1,10 @@
+$header-text-color: #fff;
+$header-background: #545a74;
+
+.wrapper {
+  background-color: $header-background;
+  padding: 20px;
+}
+.heading {
+  color: $header-text-color;
+}

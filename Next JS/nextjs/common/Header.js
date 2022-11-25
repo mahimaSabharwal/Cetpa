@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import styles from "../styles/Header.module.css";
+import styles from "../styles/Header.module.scss";
 
 const Header = () => {
   return (
@@ -13,7 +13,9 @@ const Header = () => {
           </Link>
         </div>
         <div className="col-9">
-          <h1 className="text-center">Next JS Project</h1>
+          <h1 className={[styles.heading, "text-center"].join(" ")}>
+            Next JS Project
+          </h1>
         </div>
       </div>
     </header>
