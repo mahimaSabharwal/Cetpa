@@ -25,8 +25,8 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="d-flex">
-          <Link href="/login.js">Login</Link> |
-          <Link href="/registration.js">Registration</Link>
+          <Link href="/login">Login</Link>&nbsp; | &nbsp;
+          <Link href="/registration">Registration</Link>
         </div>
       </div>
     </nav>
