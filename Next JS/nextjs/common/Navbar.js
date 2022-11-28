@@ -12,16 +12,6 @@ const Navbar = () => {
                 About
               </Link>
             </li>
-            {/* <li className="nav-item">
-              <Link href="/courses" className="nav-link active">
-                Courses
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link href="/facilities" className="nav-link active">
-                Facilities
-              </Link>
-            </li> */}
             <li className="nav-item">
               <Link href="/ourProducts" className="nav-link active">
                 Products
@@ -33,6 +23,10 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
+        </div>
+        <div className="d-flex">
+          <Link href="/login.js">Login</Link> |
+          <Link href="/registration.js">Registration</Link>
         </div>
       </div>
     </nav>
