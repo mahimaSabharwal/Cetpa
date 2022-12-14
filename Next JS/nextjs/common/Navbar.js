@@ -7,6 +7,11 @@ const Navbar = () => {
     setLoginStatus(localStorage.getItem("loginStatus"));
     console.log(loginStatus);
   });
+  const logoutFn = () => {
+    localStorage.removeItem("loginStatus");
+    localStorage.removeItem("username");
+    localStorage.removeItem("name");
+  };
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -37,7 +42,9 @@ const Navbar = () => {
         )}
         {loginStatus && (
           <div className="d-flex">
-            <Link href="/">Logout</Link>
+            <Link href="/" onClick={logoutFn}>
+              Logout
+            </Link>
           </div>
         )}
       </div>

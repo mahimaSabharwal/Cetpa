@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -6,7 +6,6 @@ import axios from "axios";
 //Bootstrap
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useState } from "react";
 
 export const getStaticProps = () => {
   let url = process?.env?.BASE_URL;
@@ -21,6 +20,12 @@ const login = (props) => {
   const router = useRouter();
   const [formData, setFormData] = useState();
   const [loginStatus, setLoginStatus] = useState(false);
+  useEffect(() => {
+    const loginStat = localStorage.getItem("loginStatus");
+    if (loginStat) {
+      router.push("/");
+    }
+  });
 
   const loginFn = async () => {
     console.log(props);
