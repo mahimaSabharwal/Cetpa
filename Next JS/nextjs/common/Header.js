@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../styles/Header.module.scss";
 
 const Header = () => {

@@ -8,20 +8,38 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 
+export const getStaticProps = () => {
+  let url = process?.env?.BASE_URL;
+  return {
+    props: {
+      baseUrl: url,
+    },
+  };
+};
+
 const login = (props) => {
   const router = useRouter();
   const [formData, setFormData] = useState();
   const [loginStatus, setLoginStatus] = useState(false);
+
   const loginFn = async () => {
-    const response = await axios.post(
-      "http://localhost:3000/api/users/login",
-      formData
-    );
-    console.log(response.data);
-    if (response.status === 201) {
-      setLoginStatus(true);
-      router.push("/products");
-    }
+    console.log(props);
+    try {
+      const response = await axios.post(
+        `${props.baseUrl}/api/users/login`,
+        formData
+      );
+      console.log(response.data);
+      if (response.data.userid) {
+        setLoginStatus(true);
+        console.log(loginStatus);
+        localStorage.setItem("loginStatus", true);
+        localStorage.setItem("username", response.data.email);
+        localStorage.setItem("name", response.data.name);
+
+        router.push("/ourProducts");
+      }
+    } catch {}
   };
   const handleChange = (e) => {
     let tempObj = {};

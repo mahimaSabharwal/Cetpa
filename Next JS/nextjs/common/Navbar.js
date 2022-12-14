@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 const Navbar = () => {
+  const [loginStatus, setLoginStatus] = useState();
+  useEffect(() => {
+    setLoginStatus(localStorage.getItem("loginStatus"));
+    console.log(loginStatus);
+  });
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -24,10 +29,17 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="d-flex">
-          <Link href="/login">Login</Link>&nbsp; | &nbsp;
-          <Link href="/registration">Registration</Link>
-        </div>
+        {!loginStatus && (
+          <div className="d-flex">
+            <Link href="/login">Login</Link>&nbsp; | &nbsp;
+            <Link href="/registration">Registration</Link>
+          </div>
+        )}
+        {loginStatus && (
+          <div className="d-flex">
+            <Link href="/">Logout</Link>
+          </div>
+        )}
       </div>
     </nav>
   );
